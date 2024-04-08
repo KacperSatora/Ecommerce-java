@@ -27,4 +27,12 @@ public class Product {
 
         this.price = newPrice;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
