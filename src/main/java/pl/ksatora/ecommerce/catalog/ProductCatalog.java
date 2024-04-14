@@ -1,36 +1,32 @@
 package pl.ksatora.ecommerce.catalog;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class ProductCatalog {
 
-    private ArrayList<Product> products;
+    ProductStorage productStorage;
 
-    public ProductCatalog() {
-        this.products = new ArrayList<>();
+
+    public ProductCatalog(ProductStorage productStorage) {
+        this.productStorage = productStorage;
     }
 
     public List<Product> allProducts() {
-        return products;
+        return productStorage.allProducts();
     }
 
     public String addProduct(String name, String description) {
         UUID id = UUID.randomUUID();
-        Product newProduct = new Product(id, name, description);
 
-        products.add(newProduct);
+        Product newProduct = new Product(id, name, description);
+        productStorage.add(newProduct);
 
         return newProduct.getId();
     }
 
     public Product getProductBy(String id) {
-        return products.stream()
-                .filter(product -> product.getId().equals(id))
-                .findFirst()
-                .get();
+        return productStorage.getProductBy(id);
     }
 
     public void changePrice(String id, BigDecimal newPrice) {
