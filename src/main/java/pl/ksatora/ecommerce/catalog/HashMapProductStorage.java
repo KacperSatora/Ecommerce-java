@@ -6,7 +6,10 @@ import java.util.List;
 public class HashMapProductStorage implements ProductStorage {
     HashMap<String, Product> products;
 
-    // TODO missing function (constructor?)
+    public HashMapProductStorage() {
+        this.products = new HashMap<>();
+    }
+
     @Override
     public List<Product> allProducts() {
         return products.values()

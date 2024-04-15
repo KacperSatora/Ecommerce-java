@@ -22,7 +22,7 @@ public class HashMapProductStorageTest {
                 .extracting(Product::getName)
                 .contains("test-it");
 
-//        Product product = new Product(UUID.randomUUID(), "test it", "desc");
+//        Product testProduct = new Product(UUID.randomUUID(), "test it", "desc");
 
     }
 

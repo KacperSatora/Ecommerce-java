@@ -18,4 +18,6 @@ public class ProductCatalogController {
     List<Product> allProducts() {
         return catalog.allProducts();
     }
+
+
 }
