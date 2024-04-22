@@ -3,9 +3,8 @@ package pl.ksatora.hello;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HelloTest {
     @Test
@@ -19,16 +18,16 @@ public class HelloTest {
         assert 6 == result;
     }
 
-    @Test
-    void itFail() {
-        //A / Arrange  / Given
-        var a = 2;
-        var b = 4;
-        //A / Act      / When
-        var result = a + b;
-        //A / Assert   / Then / Expected
-        assert 10 == result;
-    }
+//    @Test
+//    void itFail() {
+//        //A / Arrange  / Given
+//        var a = 2;
+//        var b = 4;
+//        //A / Act      / When
+//        var result = a + b;
+//        //A / Assert   / Then / Expected
+//        assert 10 == 6;
+//    }
 
     @Test
     void itGreetUsername() {

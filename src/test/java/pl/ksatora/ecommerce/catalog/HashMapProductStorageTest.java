@@ -20,7 +20,7 @@ public class HashMapProductStorageTest {
         assertThat(products)
                 .hasSize(1)
                 .extracting(Product::getName)
-                .contains("test-it");
+                .contains("test it");
 
 //        Product testProduct = new Product(UUID.randomUUID(), "test it", "desc");
 
@@ -38,7 +38,7 @@ public class HashMapProductStorageTest {
     }
 
     private ProductStorage thereIsHashMapStorage() {
-        return null;
+        return new HashMapProductStorage();
     }
 
     private Product thereIsExampleProduct() {
