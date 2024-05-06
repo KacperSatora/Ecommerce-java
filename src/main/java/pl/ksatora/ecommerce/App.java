@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import pl.ksatora.ecommerce.catalog.ArrayListProductStorage;
 import pl.ksatora.ecommerce.catalog.ProductCatalog;
+import pl.ksatora.ecommerce.sales.SalesFacade;
 
 @SpringBootApplication
 public class App {
@@ -19,5 +20,9 @@ public class App {
         productCatalog.addProduct("Cobi set 1", "Nice");
 
         return productCatalog;
+    }
+    @Bean
+    SalesFacade createMySalesFacade() {
+        return new SalesFacade();
     }
 }

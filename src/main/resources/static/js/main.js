@@ -3,6 +3,11 @@ getProducts = () => {
         .then(response => response.json());
 }
 
+const getCurrentOffer = () => {
+    return fetch("/api/current-offer")
+        .then(response => response.json())
+}
+
 createProductHtmlEl = (productData) => {
     const template = `
         <div>
@@ -21,7 +26,13 @@ createProductHtmlEl = (productData) => {
 document.addEventListener("DOMContentLoaded", () => {
     console.log("it works");
     const productsList = document.querySelector("#productsList");
+    //TODO classes for getCurrentOffer to make them show on endpoint
     getProducts()
+        .then(products => products.map(createProductHtmlEl))
+        .then(productsHtmls => {
+            productsHtmls.forEach(htmlEl => productsList.appendChild(htmlEl))
+        });
+    getCurrentOffer()
         .then(products => products.map(createProductHtmlEl))
         .then(productsHtmls => {
             productsHtmls.forEach(htmlEl => productsList.appendChild(htmlEl))
