@@ -49,4 +49,8 @@ public class Cart {
     private boolean isInCart(String product) {
         return productsQuantities.containsKey(product);
     }
+
+    public void addProduct(String productId) {
+
+    }
 }

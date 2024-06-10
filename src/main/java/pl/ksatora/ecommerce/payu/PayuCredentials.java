@@ -1,4 +1,4 @@
-package pl.ksatora.ecommerce.sales.payu;
+package pl.ksatora.ecommerce.payu;
 
 public class PayuCredentials {
     static boolean sandbox;

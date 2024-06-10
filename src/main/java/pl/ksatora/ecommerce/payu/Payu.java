@@ -1,4 +1,4 @@
-package pl.ksatora.ecommerce.sales.payu;
+package pl.ksatora.ecommerce.payu;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
