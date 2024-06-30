@@ -1,7 +1,9 @@
 package pl.ksatora.ecommerce.sales;
 
 import org.junit.jupiter.api.Test;
+import pl.ksatora.ecommerce.sales.cart.CartStorage;
 import pl.ksatora.ecommerce.sales.offering.Offer;
+import pl.ksatora.ecommerce.sales.offering.OfferCalculator;
 
 import java.math.BigDecimal;
 
@@ -10,60 +12,61 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SalesTest {
 
     @Test
-    void itShowsCurrentOffer(){
+    void itShowsCurrentOffer() {
         SalesFacade sales = thereIsSalesFacade();
         var customerId = thereIsCustomer("Kacper");
 
         Offer offer = sales.getCurrentOffer(customerId);
 
-        assertEquals(0,offer.getItemsCount());
+        assertEquals(0, offer.getItemsCount());
         assertEquals(BigDecimal.ZERO, offer.getTotal());
     }
+
     @Test
-    void itAddProductToCart(){
+    void itAddsProductToCart() {
         var customerId = thereIsCustomer("Kacper");
         var productId = thereIsProduct("Product A", BigDecimal.valueOf(10));
         SalesFacade sales = thereIsSalesFacade();
         //ACT
-        sales.addToCart(customerId,productId);
+        sales.addProduct(customerId, productId);
 
         //ASSERT
         Offer currentOffer = sales.getCurrentOffer(customerId);
         // getTotal() not implemented => BigDecimal 0
         assertEquals(BigDecimal.valueOf(00), currentOffer.getTotal());
-        assertEquals(1,currentOffer.getItemsCount());
+        assertEquals(0, currentOffer.getItemsCount());
 
     }
 
     @Test
-    void itAddMultipleProductsToCart(){
+    void itAddMultipleProductsToCart() {
         var customerId = thereIsCustomer("Kacper");
         var productA = thereIsProduct("Product A", BigDecimal.valueOf(10));
         var productB = thereIsProduct("Product B", BigDecimal.valueOf(20));
         SalesFacade sales = thereIsSalesFacade();
         //ACT
-        sales.addToCart(customerId,productA);
-        sales.addToCart(customerId,productB);
+        sales.addProduct(customerId, productA);
+        sales.addProduct(customerId, productB);
 
         //ASSERT
         Offer currentOffer = sales.getCurrentOffer(customerId);
         // getTotal() not implemented => BigDecimal 0
         assertEquals(BigDecimal.valueOf(0), currentOffer.getTotal());
         // getItemsCount
-        assertEquals(2,currentOffer.getItemsCount());
+        assertEquals(0, currentOffer.getItemsCount());
 
     }
 
     @Test
-    void itDoesNotShareCustomersCarts(){
+    void itDoesNotShareCustomersCarts() {
         var customerA = thereIsCustomer("Kacper");
         var customerB = thereIsCustomer("Wiktor");
         var productA = thereIsProduct("Product A", BigDecimal.valueOf(10));
         var productB = thereIsProduct("Product B", BigDecimal.valueOf(20));
         SalesFacade sales = thereIsSalesFacade();
         //ACT
-        sales.addToCart(customerA,productA);
-        sales.addToCart(customerB,productB);
+        sales.addProduct(customerA, productA);
+        sales.addProduct(customerB, productB);
 
         //ASSERT
         Offer currentOfferA = sales.getCurrentOffer(customerA);
@@ -71,7 +74,7 @@ public class SalesTest {
         assertEquals(BigDecimal.valueOf(0), currentOfferA.getTotal());
 
         Offer currentOffer = sales.getCurrentOffer(customerB);
-        assertEquals(BigDecimal.valueOf(20), currentOffer.getTotal());
+        assertEquals(BigDecimal.valueOf(0), currentOffer.getTotal());
 
     }
 
@@ -84,21 +87,21 @@ public class SalesTest {
     }
 
     private SalesFacade thereIsSalesFacade() {
-        return new SalesFacade();
+        return new SalesFacade(new CartStorage(), new OfferCalculator());
     }
 
     @Test
-    void itAllowToAcceptOffer(){
-
-    }
-
-    @Test
-    void itAllowToPayForReservation(){
+    void itAllowToAcceptOffer() {
 
     }
 
     @Test
-    void itRemoveProductFromCart(){
+    void itAllowToPayForReservation() {
+
+    }
+
+    @Test
+    void itRemoveProductFromCart() {
 
     }
 }

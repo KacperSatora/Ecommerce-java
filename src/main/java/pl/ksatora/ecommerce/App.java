@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import pl.ksatora.ecommerce.catalog.ArrayListProductStorage;
 import pl.ksatora.ecommerce.catalog.ProductCatalog;
 import pl.ksatora.ecommerce.sales.SalesFacade;
+import pl.ksatora.ecommerce.sales.cart.CartStorage;
+import pl.ksatora.ecommerce.sales.offering.OfferCalculator;
 
 @SpringBootApplication
 public class App {
@@ -23,6 +25,6 @@ public class App {
     }
     @Bean
     SalesFacade createMySalesFacade() {
-        return new SalesFacade();
+        return new SalesFacade(new CartStorage(), new OfferCalculator());
     }
 }

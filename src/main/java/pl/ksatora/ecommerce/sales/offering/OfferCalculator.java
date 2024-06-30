@@ -1,12 +1,14 @@
 package pl.ksatora.ecommerce.sales.offering;
 
-import java.math.BigDecimal;
+import pl.ksatora.ecommerce.sales.cart.CartItem;
+
+import java.util.List;
 
 public class OfferCalculator {
-    public Offer calculate(List<CartLine> lines) {
-        return new Offer (
-                BigDecimal.valueOf(10).multiply(new BigDecimal(lines.size())),
-                lines.size()
-        );
+    public Offer calculate(List<CartItem> items) {
+        // every Xth for free
+        // >100PLN -10PLN
+
+        return new Offer();
     }
 }

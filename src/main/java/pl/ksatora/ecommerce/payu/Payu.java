@@ -9,9 +9,11 @@ import org.springframework.web.client.RestTemplate;
 public class Payu {
 
     RestTemplate http;
-    // TODO constructor not complete
-    public Payu(RestTemplate http) {
+    private PayuCredentials payuCredentials;
+
+    public Payu(RestTemplate http, PayuCredentials payuCredentials) {
         this.http = http;
+        this.payuCredentials = payuCredentials;
     }
 
     public OrderCreateResponse handle(OrderCreateRequest orderCreateRequest) {
@@ -33,11 +35,11 @@ public class Payu {
         String body = String.format("grant_type=client_credentials&client_id=%s&client_secret=%s",
                 PayuCredentials.getClientId(),
                 PayuCredentials.getClientSecret()
-                );
+        );
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-        HttpEntity<String> request = new HttpEntity<>(body,headers);
+        HttpEntity<String> request = new HttpEntity<>(body, headers);
 
         ResponseEntity<AccessTokenResponse> atResponse = http.postForEntity(
                 "https://secure.snd.payu.com/pl/standard/user/oauth/authorize",

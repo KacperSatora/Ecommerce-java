@@ -3,7 +3,6 @@ package pl.ksatora.ecommerce.payu;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestTemplate;
 import pl.ksatora.ecommerce.catalog.Product;
-import pl.ksatora.ecommerce.sales.payu.*;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

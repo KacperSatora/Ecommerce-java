@@ -27,7 +27,7 @@ const acceptOffer = (acceptOfferRequest) => {
 createProductHtmlEl = (productData) => {
     const template = `
         <div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThtvTcTtNhsHpbjUJA5zozfapMee2a9MsxXRP4MPxNgQ&s" width="200" height="200">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThtvTcTtNhsHpbjUJA5zozfapMee2a9MsxXRP4MPxNgQ&s" width="200" height="200" alt="item-image">
             <h4>${productData.name}</h4>
             <span>${productData.description}</span>
             <span>${productData.price}</span>

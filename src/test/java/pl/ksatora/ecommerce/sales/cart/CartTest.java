@@ -22,7 +22,7 @@ public class CartTest {
         Cart cart = Cart.empty();
         String productId = thereIsProduct(PRODUCT_1);
         //Act
-        cart.add(productId);
+        cart.addProduct(productId);
 
         //Assert
         assertThat(cart.isEmpty())
@@ -36,8 +36,8 @@ public class CartTest {
         String product1 = thereIsProduct(PRODUCT_1);
         String product2 = thereIsProduct(PRODUCT_2);
         //Act
-        cart.add(product1);
-        cart.add(product2);
+        cart.addProduct(product1);
+        cart.addProduct(product2);
 
         //Assert
         assertThat(cart.getItemsCount())
@@ -50,8 +50,8 @@ public class CartTest {
         Cart cart = Cart.empty();
         String product1 = thereIsProduct(PRODUCT_1);
         //Act
-        cart.add(product1);
-        cart.add(product1);
+        cart.addProduct(product1);
+        cart.addProduct(product1);
 
         //Assert
         assertThat(cart.getItemsCount())
@@ -67,9 +67,9 @@ public class CartTest {
         String product1 = thereIsProduct(PRODUCT_1);
         String product2 = thereIsProduct(PRODUCT_2);
         //Act
-        cart.add(product1);
-        cart.add(product1);
-        cart.add(product2);
+        cart.addProduct(product1);
+        cart.addProduct(product1);
+        cart.addProduct(product2);
 
         //Assert
         assertThat(cart.getItemsCount()).isEqualTo(2);
@@ -79,7 +79,7 @@ public class CartTest {
     }
 
     private void assertCartContainsProductWithQuantity(Cart cart, String product1, int expectedQuantity) {
-        assertThat(cart.getCartItems())
+        assertThat(cart.getItems())
                 .filteredOn(cartItem -> cartItem.getProductId().equals(product1))
                 .extracting(CartItem::getQuantity)
                 .first()
