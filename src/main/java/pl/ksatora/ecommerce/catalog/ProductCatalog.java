@@ -16,10 +16,10 @@ public class ProductCatalog {
         return productStorage.allProducts();
     }
 
-    public String addProduct(String name, String description) {
+    public String addProduct(String name, String description, BigDecimal price) {
         UUID id = UUID.randomUUID();
 
-        Product newProduct = new Product(id, name, description);
+        Product newProduct = new Product(id, name, description, price);
         productStorage.add(newProduct);
 
         return newProduct.getId();

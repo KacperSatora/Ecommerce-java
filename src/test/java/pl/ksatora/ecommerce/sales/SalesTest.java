@@ -1,7 +1,7 @@
 package pl.ksatora.ecommerce.sales;
 
 import org.junit.jupiter.api.Test;
-import pl.ksatora.ecommerce.sales.cart.CartStorage;
+import pl.ksatora.ecommerce.sales.cart.InMemoryCartStorage;
 import pl.ksatora.ecommerce.sales.offering.Offer;
 import pl.ksatora.ecommerce.sales.offering.OfferCalculator;
 
@@ -87,7 +87,7 @@ public class SalesTest {
     }
 
     private SalesFacade thereIsSalesFacade() {
-        return new SalesFacade(new CartStorage(), new OfferCalculator());
+        return new SalesFacade(new InMemoryCartStorage(), new OfferCalculator());
     }
 
     @Test

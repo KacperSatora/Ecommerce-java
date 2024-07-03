@@ -24,7 +24,7 @@ public class ProductCatalogTest {
     void itAllowsToAddProduct() {
         ProductCatalog catalog = thereIsProductCatalog();
 
-        catalog.addProduct("Lego set 8083", "Nice one");
+        catalog.addProduct("Lego set 8083", "Nice one", BigDecimal.TEN);
         List<Product> products = catalog.allProducts();
 
         assertThat(products)
@@ -34,7 +34,7 @@ public class ProductCatalogTest {
     @Test
     void itLoadsSingleProductById() {
         ProductCatalog catalog = thereIsProductCatalog();
-        String id = catalog.addProduct("Lego set 8083", "Nice one");
+        String id = catalog.addProduct("Lego set 8083", "Nice one", BigDecimal.ONE);
 
         Product loaded = catalog.getProductBy(id);
 
@@ -44,7 +44,7 @@ public class ProductCatalogTest {
     @Test
     void itAllowsChangePrice() {
         ProductCatalog catalog = thereIsProductCatalog();
-        String id = catalog.addProduct("Lego set 8083", "Nice one");
+        String id = catalog.addProduct("Lego set 8083", "Nice one", BigDecimal.TEN);
 
         catalog.changePrice(id, BigDecimal.valueOf(10.10));
         Product loaded = catalog.getProductBy(id);

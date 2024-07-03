@@ -18,19 +18,19 @@ public class SalesController {
     }
 
     @GetMapping("/api/current-offer")
-    Offer getCurrentOffer(){
+    Offer getCurrentOffer() {
         String customerId = getCurrentCustomerId();
         return salesFacade.getCurrentOffer(customerId);
     }
 
     @PostMapping("/api/add-to-cart/{productId}")
-    void addToCart(@PathVariable String productId) {
+    void addToCart(@PathVariable(name = "productId") String productId) {
         String customerId = getCurrentCustomerId();
         salesFacade.addProduct(customerId, productId);
     }
 
     @PostMapping("/api/accept-offer")
-    ReservationDetail acceptOffer(AcceptOfferRequest acceptOfferRequest){
+    ReservationDetail acceptOffer(AcceptOfferRequest acceptOfferRequest) {
         String customerId = getCurrentCustomerId();
         return salesFacade.acceptOffer(customerId, acceptOfferRequest);
     }

@@ -2,6 +2,7 @@ package pl.ksatora.ecommerce.catalog;
 
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -42,7 +43,7 @@ public class HashMapProductStorageTest {
     }
 
     private Product thereIsExampleProduct() {
-        return new Product(UUID.randomUUID(), "test it", "desc");
+        return new Product(UUID.randomUUID(), "test it", "desc", BigDecimal.TEN);
     }
 
 }

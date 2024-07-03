@@ -64,7 +64,7 @@ public class SalesHTTPTest {
     }
 
     private String thereIsProduct(String name, BigDecimal price) {
-        var id = catalog.addProduct(name, name);
+        var id = catalog.addProduct(name, name, price);
         catalog.changePrice(id, price);
 
         return id;

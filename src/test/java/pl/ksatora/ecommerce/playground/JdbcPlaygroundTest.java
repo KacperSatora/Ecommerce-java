@@ -84,7 +84,7 @@ public class JdbcPlaygroundTest {
                 "VALUES " +
                 "(?, ?, ?)";
 
-        var product = new Product(UUID.randomUUID(), "my product", "nice one");
+        var product = new Product(UUID.randomUUID(), "my product", "nice one", BigDecimal.TEN);
         product.changePrice(BigDecimal.TEN);
 
         jdbcTemplate.update(insert, product.getId(), product.getName(), product.getPrice());
@@ -112,7 +112,8 @@ public class JdbcPlaygroundTest {
                     var myResult = new Product(
                             UUID.randomUUID(),
                             rs.getString("name"),
-                            rs.getString("name")
+                            rs.getString("name"),
+                            rs.getBigDecimal("price")
                     );
                     myResult.changePrice(BigDecimal.valueOf(rs.getDouble("price")));
                     return myResult;

@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import pl.ksatora.ecommerce.catalog.ArrayListProductStorage;
 import pl.ksatora.ecommerce.catalog.ProductCatalog;
 
+import java.math.BigDecimal;
+
 @SpringBootTest
 public class AppTest {
     @Test
@@ -14,8 +16,8 @@ public class AppTest {
     @Bean
     ProductCatalog createMyProductCatalog(){
         ProductCatalog productCatalog = new ProductCatalog(new ArrayListProductStorage());
-        productCatalog.addProduct("Lego set 1", "Nice one");
-        productCatalog.addProduct("Lego set 2", "Nice one");
+        productCatalog.addProduct("Lego set 1", "Nice one", BigDecimal.TEN);
+        productCatalog.addProduct("Lego set 2", "Nice one", BigDecimal.TEN);
         return productCatalog;
     }
 }

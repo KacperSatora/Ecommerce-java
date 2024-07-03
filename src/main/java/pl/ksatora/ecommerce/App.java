@@ -6,8 +6,10 @@ import org.springframework.context.annotation.Bean;
 import pl.ksatora.ecommerce.catalog.ArrayListProductStorage;
 import pl.ksatora.ecommerce.catalog.ProductCatalog;
 import pl.ksatora.ecommerce.sales.SalesFacade;
-import pl.ksatora.ecommerce.sales.cart.CartStorage;
+import pl.ksatora.ecommerce.sales.cart.InMemoryCartStorage;
 import pl.ksatora.ecommerce.sales.offering.OfferCalculator;
+
+import java.math.BigDecimal;
 
 @SpringBootApplication
 public class App {
@@ -18,13 +20,13 @@ public class App {
     @Bean
     ProductCatalog createMyProductCatalog() {
         ProductCatalog productCatalog = new ProductCatalog(new ArrayListProductStorage());
-        productCatalog.addProduct("Lego set 1", "ok");
-        productCatalog.addProduct("Cobi set 1", "Nice");
+        productCatalog.addProduct("Lego set 1", "very nice lego set", BigDecimal.TEN);
+        productCatalog.addProduct("Cobi set 1", "not so nice blocks", BigDecimal.ONE);
 
         return productCatalog;
     }
     @Bean
     SalesFacade createMySalesFacade() {
-        return new SalesFacade(new CartStorage(), new OfferCalculator());
+        return new SalesFacade(new InMemoryCartStorage(), new OfferCalculator());
     }
 }
