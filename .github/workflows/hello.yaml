@@ -1,9 +1,9 @@
 name: Hello Github Actions
 on: [push]
-  jobs:
-    HelloWorld:
-      runs-on: ubuntu-latest
-      steps:
-      - run: "Job automatically triggered"
-      - run: ls -al
+jobs:
+  HelloWorld:
+    runs-on: ubuntu-latest
+    steps:
+    - run: "Job automatically triggered"
+    - run: ls -al
     
