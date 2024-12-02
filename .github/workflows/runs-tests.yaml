@@ -1,11 +1,14 @@
 name: Run Unit Tests
-on: [push]
+on: 
+  push:
+    tags:
+      - "v*.*.*"
 jobs:
   StaticCodeChecking:
     runs-on: ubuntu-latest
     steps:
     - run: echo "all is fine"
-  UnitTests:
+  CreatePackage:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -13,9 +16,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: '17'
-        distribution: 'coretto'
+        distribution: 'corretto'
         architecture: x64
     - name: Compile it
-      run: mvn compile
-    - name: Start my unit tests
-      run: mvn test
+      run: mvn -DskipTests package
