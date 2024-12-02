@@ -20,3 +20,12 @@ jobs:
         architecture: x64
     - name: Compile it
       run: mvn -DskipTests package
+    - run: "ls -la target/"
+    - run: "mvn target/*.jar target/ecommerce.jar"
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "target/ecommerce.jar"
+        name: "my release"
+        body:
+          ## nice release
+          herewego
