@@ -5,5 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: "Job automatically triggered"
-    - run: ls -al
-    
+    - name: Check out repository code
+      uses: actions/checkout@v4
+    - run: "ls -al"
+    - run: "tree ./"
