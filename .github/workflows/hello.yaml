@@ -4,7 +4,7 @@ jobs:
   HelloWorld:
     runs-on: ubuntu-latest
     steps:
-    - run: "echo Job automatically triggered"
+    - run: echo "Job automatically triggered"
     - name: Check out repository code
       uses: actions/checkout@v4
     - run: "ls -al"
